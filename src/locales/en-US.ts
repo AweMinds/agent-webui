@@ -196,7 +196,7 @@ export default {
     "server": "Server",
     "about": "About",
     "model": "Model",
-    "sysname": "AI Drawing"
+    "sysname": "Aweminds"
   },
   "mjtab": {
     "chat": "Chat",
