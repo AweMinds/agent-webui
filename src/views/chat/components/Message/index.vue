@@ -62,25 +62,25 @@ const options = computed(() => {
     },
   ]
 
-  if (!props.inversion) {
-    common.unshift({
-      label: asRawText.value ? t('chat.preview') : t('chat.showRawText'),
-      key: 'toggleRenderType',
-      icon: iconRender({ icon: asRawText.value ? 'ic:outline-code-off' : 'ic:outline-code' }),
-    });
-    common.unshift({
-      label: t('mj.tts'),
-      key: 'tts',
-      icon: iconRender({ icon:'mdi:tts' }),
-    })
-  }
+  // if (!props.inversion) {
+  //   common.unshift({
+  //     label: asRawText.value ? t('chat.preview') : t('chat.showRawText'),
+  //     key: 'toggleRenderType',
+  //     icon: iconRender({ icon: asRawText.value ? 'ic:outline-code-off' : 'ic:outline-code' }),
+  //   });
+  //   common.unshift({
+  //     label: t('mj.tts'),
+  //     key: 'tts',
+  //     icon: iconRender({ icon:'mdi:tts' }),
+  //   })
+  // }
 
   return common
 })
 
 function handleSelect(key: 'copyText' | 'delete' | 'edit' | 'toggleRenderType' | 'tts') {
   switch (key) {
-    case 'tts': 
+    case 'tts':
       homeStore.setMyData({act:'gpt.ttsv2', actData:{ index:props.index , uuid:props.chat.uuid, text:props.text } });
       return;
     case 'copyText':
@@ -141,11 +141,11 @@ function handleRegenerate2() {
     <div class="overflow-hidden text-sm " :class="[inversion ? 'items-end' : 'items-start']">
       <p class="text-xs group  text-[#b4bbc4] flex  items-center space-x-2 " :class="[inversion ? 'justify-end' : 'justify-start']">
         <span>{{ dateTime }}</span>
-        <span v-if="chat.model"  class="text-[#b4bbc4]/50">{{ chat.model }}</span>
+<!--        <span v-if="chat.model"  class="text-[#b4bbc4]/50">{{ chat.model }}</span>-->
         <!-- <span>{{ chat.opt?.progress }}</span> -->
         <template  v-if="chat.opt?.status=='SUCCESS'">
           <SvgIcon icon="ri:restart-line" @click="sendReload"  class="cursor-pointer text-neutral-300 hover:text-neutral-800 dark:hover:text-neutral-300 " ></SvgIcon>
-          
+
           <div @click="getSeed(chat, message )" class="cursor-pointer">
             <span v-if="chat.opt?.seed">Seed:{{ chat.opt?.seed }}</span>
             <span v-else>Seed</span>

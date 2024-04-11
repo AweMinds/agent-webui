@@ -261,12 +261,12 @@ watch(()=> homeStore.myData.vtoken ,  regCookie  )
                 {{ $t('mj.tokenInfo1') }}
                 <p class="py-1" v-text="$t('mj.tokenInfo2')"> </p>
                 <p class=" text-right">
-                <NButton @click="st.isShow=true" type="info" size="small">{{ $t('setting.setting') }}</NButton>
+<!--                <NButton @click="st.isShow=true" type="info" size="small">{{ $t('setting.setting') }}</NButton>-->
                 </p>
                 </div>
-                  
+
             </NPopover>
-          
+
         </div>
     </div>
     <NAutoComplete v-model:value="mvalue" :options="searchOptions" :render-label="renderOption" >
