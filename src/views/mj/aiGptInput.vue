@@ -275,51 +275,51 @@ watch(()=> homeStore.myData.vtoken ,  regCookie  )
             :placeholder="placeholder"  :autosize="{ minRows: 1, maxRows: isMobile ? 4 : 8 }"
             @input="handleInput"
             @focus="handleFocus"
-            @blur="handleBlur" 
+            @blur="handleBlur"
             @keypress="handleEnter"    >
-            <template #prefix>
-                <div  class=" relative; w-[22px]">
-                    <n-tooltip trigger="hover">
-                    <template #trigger>
-                    <SvgIcon icon="line-md:uploading-loop" class="absolute bottom-[10px] left-[8px] cursor-pointer" v-if="st.isLoad==1"></SvgIcon>
-                    <SvgIcon icon="ri:attachment-line" class="absolute bottom-[10px] left-[8px] cursor-pointer" @click="fsRef.click()" v-else></SvgIcon>
-                    </template>
-                    <div v-if="canVisionModel(gptConfigStore.myData.model)" v-html="$t('mj.upPdf')">
-                        
-                    </div>
-                    <div v-else v-html="$t('mj.upImg')"> 
-                    </div>
-                    </n-tooltip>
-                </div>
-                <!-- <div  class=" relative; w-[22px]">
-                    <SvgIcon icon="bi:mic"  class="absolute bottom-[10px] left-[30px] cursor-pointer" @click="st.showMic=true"></SvgIcon>
-                </div> -->
-                <n-dropdown trigger="hover" :options="drOption" @select="handleSelectASR">
-                    <div  class=" relative; w-[22px]">
-                        <div class="absolute bottom-[14px] left-[31px]" v-if="st.micStart">
-                            <span class="relative flex h-3 w-3" >
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-3 w-3 bg-red-400"></span>
-                            </span>
-                        </div>
-                        <!-- <SvgIcon icon="bi:mic"  class="absolute bottom-[10px] left-[55px] cursor-pointer" @click="goASR()"></SvgIcon> -->
-                        <SvgIcon icon="bi:mic"  class="absolute bottom-[10px] left-[30px] cursor-pointer"></SvgIcon>
-                    </div>
-                </n-dropdown>
-                
-            </template>
+<!--            <template #prefix>-->
+<!--                <div  class=" relative; w-[22px]">-->
+<!--                    <n-tooltip trigger="hover">-->
+<!--                    <template #trigger>-->
+<!--                    <SvgIcon icon="line-md:uploading-loop" class="absolute bottom-[10px] left-[8px] cursor-pointer" v-if="st.isLoad==1"></SvgIcon>-->
+<!--                    <SvgIcon icon="ri:attachment-line" class="absolute bottom-[10px] left-[8px] cursor-pointer" @click="fsRef.click()" v-else></SvgIcon>-->
+<!--                    </template>-->
+<!--                    <div v-if="canVisionModel(gptConfigStore.myData.model)" v-html="$t('mj.upPdf')">-->
+
+<!--                    </div>-->
+<!--                    <div v-else v-html="$t('mj.upImg')">-->
+<!--                    </div>-->
+<!--                    </n-tooltip>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; <div  class=" relative; w-[22px]">-->
+<!--                    <SvgIcon icon="bi:mic"  class="absolute bottom-[10px] left-[30px] cursor-pointer" @click="st.showMic=true"></SvgIcon>-->
+<!--                </div> &ndash;&gt;-->
+<!--                <n-dropdown trigger="hover" :options="drOption" @select="handleSelectASR">-->
+<!--                    <div  class=" relative; w-[22px]">-->
+<!--                        <div class="absolute bottom-[14px] left-[31px]" v-if="st.micStart">-->
+<!--                            <span class="relative flex h-3 w-3" >-->
+<!--                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>-->
+<!--                                <span class="relative inline-flex rounded-full h-3 w-3 bg-red-400"></span>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; <SvgIcon icon="bi:mic"  class="absolute bottom-[10px] left-[55px] cursor-pointer" @click="goASR()"></SvgIcon> &ndash;&gt;-->
+<!--                        <SvgIcon icon="bi:mic"  class="absolute bottom-[10px] left-[30px] cursor-pointer"></SvgIcon>-->
+<!--                    </div>-->
+<!--                </n-dropdown>-->
+
+<!--            </template>-->
             <template #suffix>
                 <div  class=" relative; w-[40px] ">
                     <div class="absolute bottom-[-3px] right-[0px] ">
                         <NButton type="primary" :disabled="disabled || homeStore.myData.isLoader "     @click="handleSubmit" >
-                         
+
                             <template #icon>
                             <span class="dark:text-black">
-                                <SvgIcon icon="ri:stop-circle-line" v-if="homeStore.myData.isLoader" /> 
-                                <SvgIcon icon="ri:send-plane-fill"   v-else/> 
+                                <SvgIcon icon="ri:stop-circle-line" v-if="homeStore.myData.isLoader" />
+                                <SvgIcon icon="ri:send-plane-fill"   v-else/>
                             </span>
                             </template>
-                            
+
                         </NButton>
                     </div>
                 </div>

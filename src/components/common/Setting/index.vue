@@ -50,33 +50,33 @@ const show = computed({
             <General />
           </div>
         </NTabPane>
-        <NTabPane v-if="isChatGPTAPI" name="Advanced" tab="Advanced">
-          <template #tab>
-            <SvgIcon class="text-lg" icon="ri:equalizer-line" />
-            <!-- <span class="ml-2">{{ $t('setting.advanced') }}</span> -->
-            <span class="ml-2">{{ $t('mjset.model') }}</span>
-          </template>
-          <div class="min-h-[100px]">
-            <!-- <Advanced /> -->
-            <aiModel/>
-          </div>
-        </NTabPane>
+<!--        <NTabPane v-if="isChatGPTAPI" name="Advanced" tab="Advanced">-->
+<!--          <template #tab>-->
+<!--            <SvgIcon class="text-lg" icon="ri:equalizer-line" />-->
+<!--            &lt;!&ndash; <span class="ml-2">{{ $t('setting.advanced') }}</span> &ndash;&gt;-->
+<!--            <span class="ml-2">{{ $t('mjset.model') }}</span>-->
+<!--          </template>-->
+<!--          <div class="min-h-[100px]">-->
+<!--            &lt;!&ndash; <Advanced /> &ndash;&gt;-->
+<!--            <aiModel/>-->
+<!--          </div>-->
+<!--        </NTabPane>-->
 
-        <NTabPane name="server" tab="server" v-if=" ! homeStore.myData.session.isHideServer">
-          <template #tab>
-            <SvgIcon class="text-lg" icon="mingcute:server-line" />
-            <span class="ml-2">{{ $t('mjset.server') }}</span>
-          </template>
-          <aiSetServer />
-        </NTabPane>
-        <NTabPane name="Config" tab="Config">
-          <template #tab>
-            <SvgIcon class="text-lg" icon="ri:list-settings-line" />
-            <!-- <span class="ml-2">{{ $t('setting.config') }}</span> -->
-            <span class="ml-2">{{ $t('mjset.about') }}</span>
-          </template>
-          <About />
-        </NTabPane>
+<!--        <NTabPane name="server" tab="server" v-if=" ! homeStore.myData.session.isHideServer">-->
+<!--          <template #tab>-->
+<!--            <SvgIcon class="text-lg" icon="mingcute:server-line" />-->
+<!--            <span class="ml-2">{{ $t('mjset.server') }}</span>-->
+<!--          </template>-->
+<!--          <aiSetServer />-->
+<!--        </NTabPane>-->
+<!--        <NTabPane name="Config" tab="Config">-->
+<!--          <template #tab>-->
+<!--            <SvgIcon class="text-lg" icon="ri:list-settings-line" />-->
+<!--            &lt;!&ndash; <span class="ml-2">{{ $t('setting.config') }}</span> &ndash;&gt;-->
+<!--            <span class="ml-2">{{ $t('mjset.about') }}</span>-->
+<!--          </template>-->
+<!--          <About />-->
+<!--        </NTabPane>-->
 
       </NTabs>
     </div>

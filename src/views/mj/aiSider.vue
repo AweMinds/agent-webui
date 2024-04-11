@@ -50,69 +50,69 @@ const chatId= computed(()=>chatStore.active??'1002' );
                  </template>
                 AI Chat
                 </n-tooltip>
-            </a> 
-            <a   @click="homeStore.setMyData({act:'showgpts'}) " class=" router-link-exact-active h-12 w-12 cursor-pointer rounded-xl bg-white duration-300 dark:bg-[#34373c] hover:bg-[#bbb] dark:hover:bg-[#555]">
-                <n-tooltip placement="right" trigger="hover">
-                  <template #trigger> 
-                    <div  class="flex h-full justify-center items-center   py-1 flex-col" >
-                    <SvgIcon icon="ri:apps-fill" class="text-3xl flex-1"></SvgIcon>
-                     <span class="text-[10px]">GPTs</span>
-                    </div> 
-                  </template>
-                    ChatGPT Store 
-                </n-tooltip>
             </a>
+<!--            <a   @click="homeStore.setMyData({act:'showgpts'}) " class=" router-link-exact-active h-12 w-12 cursor-pointer rounded-xl bg-white duration-300 dark:bg-[#34373c] hover:bg-[#bbb] dark:hover:bg-[#555]">-->
+<!--                <n-tooltip placement="right" trigger="hover">-->
+<!--                  <template #trigger> -->
+<!--                    <div  class="flex h-full justify-center items-center   py-1 flex-col" >-->
+<!--                    <SvgIcon icon="ri:apps-fill" class="text-3xl flex-1"></SvgIcon>-->
+<!--                     <span class="text-[10px]">GPTs</span>-->
+<!--                    </div> -->
+<!--                  </template>-->
+<!--                    ChatGPT Store -->
+<!--                </n-tooltip>-->
+<!--            </a>-->
 
 
-            <a :href="`#/draw/${chatId}`" @click="st.active='draw'" class=" router-link-exact-active h-12 w-12 cursor-pointer rounded-xl bg-white duration-300 dark:bg-[#34373c] hover:bg-[#bbb] dark:hover:bg-[#555]">
-                <n-tooltip placement="right" trigger="hover">
-                  <template #trigger> 
-                    <div  class="flex h-full justify-center items-center   py-1 flex-col" :class="[goHome=='draw' ? 'active' : '']">
-                    <SvgIcon icon="ic:outline-palette" class="text-3xl flex-1"></SvgIcon>
-                     <span class="text-[10px]">{{$t('mjtab.draw')}}</span>
-                    </div> 
-                  </template>
-                    {{$t('mjtab.drawinfo')}}
-                </n-tooltip>
-            </a>
+<!--            <a :href="`#/draw/${chatId}`" @click="st.active='draw'" class=" router-link-exact-active h-12 w-12 cursor-pointer rounded-xl bg-white duration-300 dark:bg-[#34373c] hover:bg-[#bbb] dark:hover:bg-[#555]">-->
+<!--                <n-tooltip placement="right" trigger="hover">-->
+<!--                  <template #trigger>-->
+<!--                    <div  class="flex h-full justify-center items-center   py-1 flex-col" :class="[goHome=='draw' ? 'active' : '']">-->
+<!--                    <SvgIcon icon="ic:outline-palette" class="text-3xl flex-1"></SvgIcon>-->
+<!--                     <span class="text-[10px]">{{$t('mjtab.draw')}}</span>-->
+<!--                    </div>-->
+<!--                  </template>-->
+<!--                    {{$t('mjtab.drawinfo')}}-->
+<!--                </n-tooltip>-->
+<!--            </a>-->
 
 
 
-             <a   @click="homeStore.setMyData({act:'gallery'}) " class=" router-link-exact-active h-12 w-12 cursor-pointer rounded-xl bg-white duration-300 dark:bg-[#34373c] hover:bg-[#bbb] dark:hover:bg-[#555]">
-                <n-tooltip placement="right" trigger="hover">
-                  <template #trigger> 
-                    <div  class="flex h-full justify-center items-center   py-1 flex-col" >
-                    <SvgIcon icon="material-symbols:imagesmode-outline" class="text-3xl flex-1"></SvgIcon>
-                     <span class="text-[10px]">{{$t('mjtab.gallery')}}</span>
-                    </div> 
-                  </template>
-                    {{ $t('mjtab.galleryInfo') }}
-                </n-tooltip>
-            </a>
+<!--             <a   @click="homeStore.setMyData({act:'gallery'}) " class=" router-link-exact-active h-12 w-12 cursor-pointer rounded-xl bg-white duration-300 dark:bg-[#34373c] hover:bg-[#bbb] dark:hover:bg-[#555]">-->
+<!--                <n-tooltip placement="right" trigger="hover">-->
+<!--                  <template #trigger>-->
+<!--                    <div  class="flex h-full justify-center items-center   py-1 flex-col" >-->
+<!--                    <SvgIcon icon="material-symbols:imagesmode-outline" class="text-3xl flex-1"></SvgIcon>-->
+<!--                     <span class="text-[10px]">{{$t('mjtab.gallery')}}</span>-->
+<!--                    </div>-->
+<!--                  </template>-->
+<!--                    {{ $t('mjtab.galleryInfo') }}-->
+<!--                </n-tooltip>-->
+<!--            </a>-->
 
 
             <!-- <section  class=" router-link-exact-active h-12 w-12 cursor-pointer rounded-xl bg-white duration-300 dark:bg-[#34373c] hover:bg-[#bbb] dark:hover:bg-[#555]"
              >
                 <n-tooltip placement="right" trigger="hover">
-                  <template #trigger> 
+                  <template #trigger>
                     <div  class="flex  h-full justify-center items-center py-1 flex-col ">
                       <SvgIcon icon="mingcute:grid-2-line" class="text-3xl flex-1"></SvgIcon>
                       <span class="text-[10px]">画廊</span>
-                    </div>  
+                    </div>
                   </template>
                     画廊:看看别人是如何画的
-                </n-tooltip>                
+                </n-tooltip>
             </section> -->
 
-             
+
 
         </div>
-        <div class="flex flex-col  space-y-2 "> 
+        <div class="flex flex-col  space-y-2 ">
 
-            
+
             <NAvatar  size="large"  round  :src="userInfo.avatar"   v-if="userInfo.avatar"  :fallback-src="defaultAvatar"
              class=" cursor-pointer"  />
-            
+
             <HoverButton>
                 <div class="text-xl text-[#4f555e] dark:text-white flex h-full justify-center items-center "  @click="st.show = true">
                     <SvgIcon icon="ri:settings-4-line" />

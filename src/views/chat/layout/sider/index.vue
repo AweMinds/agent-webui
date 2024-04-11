@@ -98,12 +98,13 @@ watch(
           <List />
         </div>
         <div class="flex items-center p-4 space-x-4">
-          <div class="flex-1">
-            <NButton block @click="show = true">
-              {{ $t('store.siderButton') }}
-            </NButton>
-          </div>
+<!--          <div class="flex-1">-->
+<!--            <NButton block @click="show = true">-->
+<!--              {{ $t('store.siderButton') }}-->
+<!--            </NButton>-->
+<!--          </div>-->
           <NButton @click="handleClearAll">
+            清空聊天记录&nbsp;&nbsp;&nbsp;
             <SvgIcon icon="ri:close-circle-line" />
           </NButton>
         </div>
