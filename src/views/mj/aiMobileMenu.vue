@@ -37,20 +37,20 @@ watch(()=>homeStore.myData.act, (n:string)=>{
         <SvgIcon icon="ri:wechat-line" class="text-3xl"></SvgIcon>
         <div class="text-[13px]">{{$t('mjtab.chat')}}</div>
       </div>
-      <div class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showgpts'}) " >
-        <SvgIcon icon="ri:apps-fill" class="text-3xl"></SvgIcon>
-        <div class="text-[13px]">GPTs</div>
-      </div>
+<!--      <div class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showgpts'}) " >-->
+<!--        <SvgIcon icon="ri:apps-fill" class="text-3xl"></SvgIcon>-->
+<!--        <div class="text-[13px]">GPTs</div>-->
+<!--      </div>-->
 
 
-      <div class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showDraw'}) " :class="[goHome=='draw' ? 'active' : '']" >
-        <SvgIcon icon="ic:outline-palette" class="text-3xl"></SvgIcon>
-        <div class="text-[13px]">{{$t('mjtab.draw')}}</div>
-      </div>
-      <div class="flex items-center justify-center flex-col " @click="homeStore.setMyData({act:'gallery'})" >
-        <SvgIcon icon="material-symbols:imagesmode-outline" class="text-3xl"></SvgIcon>
-        <div class="text-[13px]">{{$t('mjtab.gallery')}}</div>
-      </div> 
+<!--      <div class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showDraw'}) " :class="[goHome=='draw' ? 'active' : '']" >-->
+<!--        <SvgIcon icon="ic:outline-palette" class="text-3xl"></SvgIcon>-->
+<!--        <div class="text-[13px]">{{$t('mjtab.draw')}}</div>-->
+<!--      </div>-->
+<!--      <div class="flex items-center justify-center flex-col " @click="homeStore.setMyData({act:'gallery'})" >-->
+<!--        <SvgIcon icon="material-symbols:imagesmode-outline" class="text-3xl"></SvgIcon>-->
+<!--        <div class="text-[13px]">{{$t('mjtab.gallery')}}</div>-->
+<!--      </div> -->
   </div>
 
   <n-drawer v-model:show="st.show"  class="!h-[90vh] !max-h-[660px]"  placement="bottom" v-if="goHome=='draw'">
