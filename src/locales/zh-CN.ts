@@ -375,7 +375,22 @@ export default {
 			portrait: "肖像 (2:3)",
 			landscape: "风景 (3:2)",
 		},
-	}
+	},
+
+    login: {
+        pureUsername: "账号",
+        purePassword: "密码",
+        pureForget: "忘记密码?",
+        pureLogin: "登录",
+        pureRemember: "天内免登录",
+        pureRememberInfo: "勾选并登录后，规定天数内无需输入用户名和密码会自动登入系统",
+        pureThirdLogin: "第三方登录",
+        purePhoneLogin: "手机登录",
+        pureQRCodeLogin: "二维码登录",
+        pureRegister: "注册",
+        pureUsernameReg: "请输入账号"
+
+    }
 
 
 }

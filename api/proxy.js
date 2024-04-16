@@ -16,6 +16,11 @@ module.exports = (req, res) => {
         headers= {
             'Authorization': 'Bearer ' +process.env.OPENAI_API_KEY // 添加自定义请求头
         }
+    }else if(req.url.startsWith('/userservice')){
+        target = process.env.BACKEND_API_BASE_URL??'https://aweminds.cn:8080';
+        headers= {
+            'user-token': process.env.BACKEND_API_ACCESS_TOKEN // 添加user-token请求头
+        }
     }
     // 创建代理对象并转发请求
     createProxyMiddleware({
@@ -26,6 +31,7 @@ module.exports = (req, res) => {
             // 通过路径重写，去除请求路径中的 `/api`
             '^/mjapi/': '/'
             ,'^/openapi/': '/'
+            ,'^/userservice/': '/'
         }
     })(req, res)
 }

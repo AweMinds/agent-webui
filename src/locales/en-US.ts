@@ -367,7 +367,21 @@ export default {
 			portrait: "Portrait (2:3)",
 			landscape: "Landscape (3:2)",
 		},
-	}
+	},
+
+    login: {
+        pureUsername: "Username",
+        purePassword: "Password",
+        pureForget: "Forget Password?",
+        pureLogin: "Login",
+        pureRemember: "days no need to login",
+        pureRememberInfo: "After checking and logging in, will automatically log in to the system without entering your username and password within the specified number of days.pureSure: Sure Password",
+        pureThirdLogin: "Third Login",
+        purePhoneLogin: "Phone Login",
+        pureQRCodeLogin: "QRCode Login",
+        pureRegister: "Register",
+        pureUsernameReg: "Please enter username",
+    }
 
 
 
