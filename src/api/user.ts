@@ -1,4 +1,5 @@
 import post, {get} from "@/utils/request";
+import { http } from "@/utils/http";
 
 const VITE_GLOB_API_URL = import.meta.env.VITE_GLOB_API_URL
 
@@ -79,12 +80,12 @@ export type LoginResult = {
 
 /** 登录 */
 export const getLogin = (data?: object) => {
-  return post<LoginResult>({
-    url: `/userservice/users/login/password?email=${data.email}&password=${data.password}`,
-    data,
-  })
+  // return post<LoginResult>({
+  //   url: `/userservice/users/login/password?email=${data.email}&password=${data.password}`,
+  //   data,
+  // })
 
-  // return http.request<UserResult>("post", `${VITE_GLOB_API_URL}/users/login/demo-token`, { data });
+  return http.request<UserResult>("post", `/userservice/users/login/password?email=${data.email}&password=${data.password}`, {data});
 };
 
 // /** 刷新`token` */
