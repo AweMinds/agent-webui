@@ -31,7 +31,7 @@ module.exports = (req, res) => {
             // 通过路径重写，去除请求路径中的 `/api`
             '^/mjapi/': '/'
             ,'^/openapi/': '/'
-            ,'^/userservice/': '/'
+            ,'^/userservice/': '/api'
         }
     })(req, res)
 }
