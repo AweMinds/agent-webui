@@ -1,6 +1,6 @@
 import { ss } from '@/utils/storage'
 
-const LOCAL_NAME = 'SECRET_TOKEN'
+const LOCAL_NAME = 'user-token'
 
 export function getToken() {
   return ss.get(LOCAL_NAME)

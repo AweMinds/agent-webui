@@ -9,7 +9,7 @@ import User from '@iconify-icons/ri/user-3-fill'
 import { useRenderIcon } from '@/components/custom/ReIcon/src/hooks'
 import bg from '@/assets/login/bg.png'
 import Motion from '@/views/login/utils/motion'
-import {useAppStore, useUserStoreHook} from '@/store'
+import {useAppStore, useAuthStore, useUserStoreHook} from '@/store'
 import { message } from '@/utils/message';
 
 // 引入重置样式
@@ -30,11 +30,12 @@ const disabled = ref(false)
 const ruleFormRef = ref<FormInstance>()
 
 const appStore = useAppStore()
+const authStore = useAuthStore()
 // const $t = (key: string) => key;
 
 const ruleForm = reactive({
-  username: 'demo1@aweminds.cn',
-  password: 'demo1',
+  username: '',
+  password: '',
   verifyCode: '',
 })
 
@@ -55,16 +56,19 @@ const onLogin = async (formEl: FormInstance | undefined) => {
     if (valid) {
       loading.value = true
       useUserStoreHook()
-          .loginByUsername({email: ruleForm.username, password: ruleForm.password})
-          .then((res) => {
-            if (res.status) {
-              router.push("/chat");
-              message("登录成功", {type: "success"});
-            } else {
-              message("登录失败", {type: "error"});
-            }
-          })
-          .finally(() => (loading.value = false));
+        .loginByUsername({email: ruleForm.username, password: ruleForm.password})
+        .then((res) => {
+          if (res.status) {
+            authStore.setToken(res.data.tokenValue)
+            router.push("/chat");
+            message("登录成功", {type: "success"});
+          } else {
+            message("登录失败", {type: "error"});
+          }
+        }).catch((error) => {
+          const err_msg = error.response?.data?.message?.errmsg
+          message(`登录失败，错误信息： ${err_msg}`, {type: "error"});
+        }).finally(() => (loading.value = false));
     } else {
       return fields;
     }
