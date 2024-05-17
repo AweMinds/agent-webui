@@ -196,16 +196,23 @@ MIT © [Dooy](./license)
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Dooy/chatgpt-web-midjourney-proxy&type=Date)](https://star-history.com/#Dooy/chatgpt-web-midjourney-proxy&Date)
 
-## 捐助
-如果我的开源项目对你有帮助，请考虑通过以下任意一种方式赞助: 
-<br> `付款备注上您的联系方式`
-<div style="display: flex; flex-wrap: wrap">
-    <div style="width:200px">
-        <img src="./docs/wxpay.jpg"  style="width:200px">
-        <div>微信捐助</div>
-    </div>
-    <div style="width:200px">
-        <img src="./docs/alipay.jpg"  style="width:200px"> 
-        <div>支付宝捐助</div>
-    </div>
-</div>
+## 安装
+### 1.前置准备：
+- 安装pnpm(https://pnpm.io/zh/installation)
+- 安装mvn(https://github.com/nvm-sh/nvm#install--update-script)
+- 安装node：nvm install 18.17.0
+
+### 2. 运行前端开发环境
+```
+pnpm install
+pnpm dev
+```
+
+### 3. 运行后开发环境
+```
+cd service
+cp .env.example .env
+#添加两个变量 BACKEND_API_BASE_URL和BACKEND_API_ACCESS_TOKEN
+pnpm install
+pnpm start
+```

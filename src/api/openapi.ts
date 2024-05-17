@@ -229,6 +229,14 @@ interface subModelType{
 }
 function getHeaderAuthorization(){
     let headers={}
+
+		const currentUrl = window.location.href
+		const match = /#\/chat\/(\d+)/.exec(currentUrl)
+		if (match) {
+			const sessionidh = {'session-id': match[1]}
+			headers = {...headers, ...sessionidh}
+		}
+
     if( homeStore.myData.vtoken ){
         const  vtokenh={ 'x-vtoken':  homeStore.myData.vtoken ,'x-ctoken':  homeStore.myData.ctoken};
         headers= {...headers, ...vtokenh}
