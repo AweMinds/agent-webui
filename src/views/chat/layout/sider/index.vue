@@ -8,9 +8,11 @@ import { useAppStore, useChatStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
 import { PromptStore, SvgIcon } from '@/components/common'
 import { t } from '@/locales'
+import {useChat} from "@/views/chat/hooks/useChat";
 
 const appStore = useAppStore()
 const chatStore = useChatStore()
+const { addChat } = useChat()
 
 const dialog = useDialog()
 
@@ -20,7 +22,23 @@ const show = ref(false)
 const collapsed = computed(() => appStore.siderCollapsed)
 
 function handleAdd() {
-  chatStore.addHistory({ title: 'New Chat', uuid: Date.now(), isEdit: false })
+	let message = '您好，欢迎使用HPLC小助手，请问有什么可以帮到您？'
+	let uuid = Date.now()
+
+	chatStore.addHistory({title: 'New Chat', uuid: uuid, isEdit: false})
+
+	addChat(
+		+uuid,
+		{
+			dateTime: new Date().toLocaleString(),
+			text: message,
+			inversion: false,
+			error: false,
+			conversationOptions: null,
+			requestOptions: { prompt: message, options: null },
+		},
+	)
+
   if (isMobile.value)
     appStore.setSiderCollapsed(true)
 }
