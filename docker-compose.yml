@@ -56,6 +56,7 @@ services:
       AUTH_SECRET_ERROR_TIME: 10
       BACKEND_API_BASE_URL: https://aweminds.cn:8080
       BACKEND_API_ACCESS_TOKEN: a12edb255db14b44888d51426f6dc850
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
 
   gptweb-slave1:
     container_name: agent-webui-slave1
@@ -112,6 +113,7 @@ services:
       AUTH_SECRET_ERROR_TIME: 10
       BACKEND_API_BASE_URL: https://aweminds.cn:8080
       BACKEND_API_ACCESS_TOKEN: a12edb255db14b44888d51426f6dc850
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
 
   gptweb-slave2:
     container_name: agent-webui-slave2
@@ -168,6 +170,7 @@ services:
       AUTH_SECRET_ERROR_TIME: 10
       BACKEND_API_BASE_URL: https://aweminds.cn:8080
       BACKEND_API_ACCESS_TOKEN: a12edb255db14b44888d51426f6dc850
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
 
   gptweb-slave3:
     container_name: agent-webui-slave3
@@ -224,3 +227,4 @@ services:
       AUTH_SECRET_ERROR_TIME: 10
       BACKEND_API_BASE_URL: https://aweminds.cn:8080
       BACKEND_API_ACCESS_TOKEN: a12edb255db14b44888d51426f6dc850
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
