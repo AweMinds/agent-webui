@@ -4,7 +4,7 @@ import { homeStore } from '@/store'
 import { computed,watch ,ref  } from 'vue'
 import { router } from '@/router'
 
-import aiDrawInput from './aiDrawInput.vue'; 
+import aiDrawInput from './aiDrawInput.vue';
 import {NDrawerContent,NDrawer} from "naive-ui";
 const st= ref({show:true})
 
@@ -22,6 +22,9 @@ watch(()=>homeStore.myData.act, (n:string)=>{
     if('showChat'==n){
         router.push('/chat')
     }
+		if('showUser'==n){
+			router.push('/user')
+		}
     if('showDraw'==n){
         router.push('/draw')
         st.value.show=true;
@@ -37,6 +40,10 @@ watch(()=>homeStore.myData.act, (n:string)=>{
         <SvgIcon icon="ri:wechat-line" class="text-3xl"></SvgIcon>
         <div class="text-[13px]">{{$t('mjtab.chat')}}</div>
       </div>
+			<div class="flex items-center justify-center flex-col"  @click="homeStore.setMyData({act:'showUser'}) "   :class="[ goHome =='Chat' ? 'active' : '']" >
+				<SvgIcon icon="ri:apps-fill" class="text-3xl"></SvgIcon>
+				<div class="text-[13px]">{{$t('mjtab.user')}}</div>
+			</div>
 <!--      <div class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showgpts'}) " >-->
 <!--        <SvgIcon icon="ri:apps-fill" class="text-3xl"></SvgIcon>-->
 <!--        <div class="text-[13px]">GPTs</div>-->

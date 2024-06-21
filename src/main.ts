@@ -5,6 +5,7 @@ import { setupAssets, setupScrollbarStyle } from './plugins'
 import { setupStore } from './store'
 import { setupRouter } from './router'
 import { useElementPlus } from '@/plugins/elementPlus'
+import 'tdesign-vue/es/style/index.css';
 
 async function bootstrap() {
   const app = createApp(App)

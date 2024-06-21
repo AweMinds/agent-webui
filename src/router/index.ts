@@ -99,6 +99,19 @@ const routes: RouteRecordRaw[] = [
 		name: 'Login',
 		component: () => import('@/views/login/index.vue'),
 	},
+	{
+		path: '/user',
+		name: 'User',
+		component: ChatLayout,
+		redirect: '/user/index',
+		children: [
+			{
+				path: '/user/:uuid?',
+				name: 'user',
+				component: () => import('@/views/user/index.vue'),
+			},
+		],
+	},
 
   {
     path: '/404',
