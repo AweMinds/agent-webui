@@ -1,93 +1,61 @@
 <script lang="ts" setup>
-import { computed, nextTick,ref,watch  } from 'vue'
-import { HoverButton, SvgIcon } from '@/components/common'
-import {  gptConfigStore, homeStore, useAppStore, useChatStore } from '@/store'
-import { useBasicLayout } from '@/hooks/useBasicLayout'
-import {NModal} from "naive-ui"
-import aiModel from "@/views/mj/aiModel.vue"
-import { chatSetting } from '@/api'
-
-import { Icon,Avatar } from 'tdesign-vue-next';
-
-const { isMobile } = useBasicLayout()
-
-interface Props {
-  usingContext: boolean
+import { Icon,Avatar as TAvatar,Cell,CellGroup, Toast } from 'tdesign-mobile-vue'
+const defaultAvatarUrl = 'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/avatar/avatar-1.jpg'
+const userInfo = {
+	avatarUrl: 'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/avatar/avatar-1.jpg',
+	nickName: "Kent",
+	uid: 'wx_jdx284ybds',
+	phoneNumber: '13933333333'
 }
 
-interface Emit {
-  (ev: 'export'): void
-  (ev: 'handleClear'): void
+const gotoUserEditPage = () => {
+	console.log("=========================")
+	console.log("click gotoUserEditPage")
 }
-
-defineProps<Props>()
-
-const emit = defineEmits<Emit>()
-
-const appStore = useAppStore()
-const chatStore = useChatStore()
-
-const collapsed = computed(() => appStore.siderCollapsed)
-const currentChatHistory = computed(() => chatStore.getChatHistoryByCurrentActive)
-
-function handleUpdateCollapsed() {
-  appStore.setSiderCollapsed(!collapsed.value)
-}
-
-function onScrollToTop() {
-  const scrollRef = document.querySelector('#scrollRef')
-  if (scrollRef)
-    nextTick(() => scrollRef.scrollTop = 0)
-}
-
-function handleExport() {
-  emit('export')
-}
-
-function handleClear() {
-  emit('handleClear')
-}
-const uuid = chatStore.active;
-const chatSet = new chatSetting( uuid==null?1002:uuid);
-const nGptStore = ref( chatSet.getGptConfig())  ;
-const st = ref({isShow:false});
-watch(()=>gptConfigStore.myData,()=>nGptStore.value=  chatSet.getGptConfig() , {deep:true})
-watch(()=>homeStore.myData.act,(n)=> n=='saveChat' && (nGptStore.value=  chatSet.getGptConfig() ), {deep:true})
 </script>
 
 <template>
-	<view class="user-center-card">
+	<div class="user-center-card">
+		<div class="user-center-card__title">个人中心</div>
 		<!-- 未登录的情况 -->
-		<block wx:if="{{currAuthStep === AuthStepType.ONE}}">
-			<view class="user-center-card__header" bind:tap="gotoUserEditPage">
-				<Avatar image="{{userInfo.avatarUrl || defaultAvatarUrl}}" class="user-center-card__header__avatar" />
-				<view class="user-center-card__header__name">{{'请登录'}}</view>
-			</view>
-		</block>
+<!--		<div>-->
+<!--			<view class="user-center-card__header" bind:tap="gotoUserEditPage">-->
+<!--				<Avatar image="{{userInfo.avatarUrl || defaultAvatarUrl}}" class="user-center-card__header__avatar" />-->
+<!--				<view class="user-center-card__header__name">{{'请登录'}}</view>-->
+<!--			</view>-->
+<!--		</div>-->
 		<!-- 已登录但未授权用户信息情况 -->
-		<block wx:if="{{currAuthStep === AuthStepType.TWO}}">
-			<view class="user-center-card__header">
-				<Avatar image="{{userInfo.avatarUrl || defaultAvatarUrl}}" class="user-center-card__header__avatar" />
-				<view class="user-center-card__header__name">{{userInfo.nickName || '微信用户'}}</view>
-				<!-- 需要授权用户信息，通过slot添加弹窗 -->
-				<view class="user-center-card__header__transparent" wx:if="{{isNeedGetUserInfo}}">
-					<slot name="getUserInfo" />
-				</view>
-				<!-- 不需要授权用户信息，仍然触发gotoUserEditPage事件 -->
-				<view class="user-center-card__header__transparent" bind:tap="gotoUserEditPage" wx:else></view>
-			</view>
-		</block>
+<!--		<block wx:if="{{currAuthStep === AuthStepType.TWO}}">-->
+<!--			<view class="user-center-card__header">-->
+<!--				<Avatar image="{{userInfo.avatarUrl || defaultAvatarUrl}}" class="user-center-card__header__avatar" />-->
+<!--				<view class="user-center-card__header__name">{{userInfo.nickName || '微信用户'}}</view>-->
+<!--				&lt;!&ndash; 需要授权用户信息，通过slot添加弹窗 &ndash;&gt;-->
+<!--				<view class="user-center-card__header__transparent" wx:if="{{isNeedGetUserInfo}}">-->
+<!--					<slot name="getUserInfo" />-->
+<!--				</view>-->
+<!--				&lt;!&ndash; 不需要授权用户信息，仍然触发gotoUserEditPage事件 &ndash;&gt;-->
+<!--				<view class="user-center-card__header__transparent" bind:tap="gotoUserEditPage" wx:else></view>-->
+<!--			</view>-->
+<!--		</block>-->
 		<!-- 已登录且已经授权用户信息的情况 -->
-		<block wx:if="{{currAuthStep === AuthStepType.THREE}}">
-			<view class="user-center-card__header" bind:tap="gotoUserEditPage">
-				<Avatar
+		<div wx:if="{{currAuthStep === AuthStepType.THREE}}">
+			<div class="user-center-card__header" @click="gotoUserEditPage">
+				<t-avatar
 					t-class="avatar"
 					mode="aspectFill"
 					class="user-center-card__header__avatar"
-					image="{{userInfo.avatarUrl || defaultAvatarUrl}}"
+					image="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/avatar/avatar-1.jpg"
 				/>
-				<view class="user-center-card__header__name">{{userInfo.nickName || '微信用户'}}</view>
-			</view>
-		</block>
-	</view>
+				<div class="user-center-card__user__info">
+					<div class="user-center-card__header__name">{{userInfo.nickName || '微信用户'}}</div>
+					<div class="user-center-card__user__uid">UID: {{userInfo.uid || '未获取'}}</div>
+					<div class="user-center-card__user__phone">手机号: {{userInfo.phoneNumber || '未获取'}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
+
+<style>
+@import url(./style.css);
+</style>

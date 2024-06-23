@@ -1,3 +1,4 @@
-import Message from './Message/index.vue'
+import UserCenterCard from './UserCenterCard/index.vue'
+import UsageGroup from './UsageGroup/index.vue'
 
-export { Message }
+export { UserCenterCard, UsageGroup }
