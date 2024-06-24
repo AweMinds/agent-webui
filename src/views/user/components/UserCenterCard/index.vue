@@ -16,7 +16,6 @@ const gotoUserEditPage = () => {
 
 <template>
 	<div class="user-center-card">
-		<div class="user-center-card__title">个人中心</div>
 		<!-- 未登录的情况 -->
 <!--		<div>-->
 <!--			<view class="user-center-card__header" bind:tap="gotoUserEditPage">-->
@@ -49,7 +48,9 @@ const gotoUserEditPage = () => {
 				<div class="user-center-card__user__info">
 					<div class="user-center-card__header__name">{{userInfo.nickName || '微信用户'}}</div>
 					<div class="user-center-card__user__uid">UID: {{userInfo.uid || '未获取'}}</div>
-					<div class="user-center-card__user__phone">手机号: {{userInfo.phoneNumber || '未获取'}}</div>
+					<div class="user-center-card__user__phone">手机号:
+						{{ userInfo.phoneNumber ? userInfo.phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1****$3") : '未获取' }}
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 .order-group {
 	margin-bottom: 1rem;
-	background-color: #ffffff;
+	background-color: #f5f5f5;
 	border-radius: 1rem 1rem 0 0;
 }
 .order-group .order-group__top {
@@ -26,6 +26,7 @@
 	display: flex;
 	background-color: #fff;
 	border-radius: 0 0 0.5rem 0.5rem;
+	font-weight: bold;
 }
 .order-group__item {
 	overflow: hidden;
@@ -54,7 +55,7 @@
 	position: relative;
 }
 .order-group .t-cell__title {
-	font-weight: bold;
+	/*font-weight: bold;*/
 }
 .order-group .order-group__left {
 	margin-right: 0;
