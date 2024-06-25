@@ -17,7 +17,7 @@
 	font-weight: bold;
 }
 .order-group__top__note {
-	font-size: 28rpx;
+	font-size: 1rem;
 }
 .order-group__content {
 	overflow: hidden;
@@ -56,6 +56,11 @@
 }
 .order-group .t-cell__title {
 	/*font-weight: bold;*/
+}
+
+.order-group .t-cell__note {
+	/*font-weight: bold;*/
+	font-size: 0.9rem;
 }
 .order-group .order-group__left {
 	margin-right: 0;

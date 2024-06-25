@@ -95,7 +95,7 @@ const routes: RouteRecordRaw[] = [
   //   component: () => import('@/views/mj/myTest.vue'),
   // },
 	{
-        path: '/login',
+		path: '/login',
 		name: 'Login',
 		component: () => import('@/views/login/index.vue'),
 	},
@@ -110,9 +110,13 @@ const routes: RouteRecordRaw[] = [
 				name: 'user',
 				component: () => import('@/views/user/index.vue'),
 			},
+			{
+				path: '/user/usage',
+				name: 'user-usage',
+				component: () => import('@/views/user/usage/index.vue'),
+			},
 		],
 	},
-
   {
     path: '/404',
     name: '404',

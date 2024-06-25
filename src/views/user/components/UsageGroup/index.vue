@@ -1,13 +1,22 @@
 <script lang="ts" setup>
 import { Icon as TIcon,Avatar,Cell as TCell,CellGroup as TCellGroup, Toast, Badge as TBadge } from 'tdesign-mobile-vue'
+import {router} from "@/router";
 
 const title = '我的AI'
 const desc = '使用详情说明'
 const count = 2
+const userInfo = {
+	avatarUrl: 'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/avatar/avatar-1.jpg',
+	nickName: "Kent",
+	uid: 'wx_jdx284ybds',
+	phoneNumber: '13933333333',
+	remain_chat: 238,
+}
 
 const showDetail = () => {
 	console.log("---------------")
 	console.log("click show detail")
+	router.push('/user/usage')
 }
 </script>
 
@@ -27,9 +36,7 @@ const showDetail = () => {
 			/>
 		</t-cell-group>
 		<view class="order-group__content">
-			<view class="order-group__item">
-					230
-			</view>
+			<view class="order-group__item">{{userInfo.remain_chat}}</view>
 		</view>
 	</view>
 </template>
