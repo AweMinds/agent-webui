@@ -17,9 +17,9 @@ const usage={
 <template>
 	<div class="address-item-wrapper item-wrapper-class">
 		<div class="cell-box">
-			<t-cell v-bind:title="usage.time" v-bind:note="-usage.count" :bordered="true"/>
-			<t-cell v-bind:title="usage.time" v-bind:note="-usage.count" :bordered="true"/>
-			<t-cell v-bind:title="usage.time" v-bind:note="-usage.count" :bordered="true"/>
+			<t-cell v-bind:title="usage.time" v-bind:note="usage.count" :bordered="true"/>
+			<t-cell v-bind:title="usage.time" v-bind:note="usage.count" :bordered="true"/>
+			<t-cell v-bind:title="usage.time" v-bind:note="usage.count" :bordered="true"/>
 		</div>
 	</div>
 </template>
