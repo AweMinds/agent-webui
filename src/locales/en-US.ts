@@ -204,7 +204,7 @@ export default {
     "drawinfo": "AI Drawing with Midjourney Engine",
     "gallery": "Gallery",
     "galleryInfo": "My Gallery",
-		"user": "User Center"
+		"usercenter": "User Center"
   },
   "mjchat": {
     "loading": "Loading Image",

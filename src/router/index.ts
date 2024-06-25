@@ -100,20 +100,25 @@ const routes: RouteRecordRaw[] = [
 		component: () => import('@/views/login/index.vue'),
 	},
 	{
-		path: '/user',
-		name: 'User',
+		path: '/usercenter',
+		name: 'usercenter',
 		component: ChatLayout,
-		redirect: '/user/index',
+		redirect: '/usercenter/index',
 		children: [
 			{
-				path: '/user/:uuid?',
-				name: 'user',
-				component: () => import('@/views/user/index.vue'),
+				path: '/usercenter/:uuid?',
+				name: 'usercenter',
+				component: () => import('@/views/usercenter/index.vue'),
 			},
 			{
-				path: '/user/usage',
+				path: '/usercenter/usage',
 				name: 'user-usage',
-				component: () => import('@/views/user/usage/index.vue'),
+				component: () => import('@/views/usercenter/usage/index.vue'),
+			},
+			{
+				path: '/usercenter/cooperation',
+				name: 'user-cooperation',
+				component: () => import('@/views/usercenter/cooperation/index.vue'),
 			},
 		],
 	},

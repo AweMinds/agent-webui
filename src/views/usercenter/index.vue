@@ -2,6 +2,7 @@
 import {Icon as TIcon, Avatar, Cell as TCell, CellGroup as TCellGroup, Toast} from 'tdesign-mobile-vue'
 import 'tdesign-mobile-vue/es/style/index.css'
 import {UserCenterCard as TUserCenterCard, UsageGroup as TUsageGroup} from './components'
+import {router} from "@/router";
 
 const customService = () => {
 	console.log("-----------------")
@@ -11,11 +12,17 @@ const customService = () => {
 const cooperation = () => {
 	console.log("-----------------")
 	console.log("click on cooperation")
+	router.push('/usercenter/cooperation')
+}
+
+const tutorialVideo = () => {
+	window.open('https://video.aweminds.cn/showcase.mp4', '_blank')
+	// window.location.href ='https://video.aweminds.cn/showcase.mp4'
 }
 
 const aboutUs = () => {
-	console.log("-----------------")
-	console.log("click on aboutUs")
+	window.open('user_center_header.png', '_blank');
+	// window.location.href ='user_center_header.png'
 }
 </script>
 
@@ -36,9 +43,10 @@ const aboutUs = () => {
 			</view>
 
 			<div class="cell-box">
-					<t-cell title="联系客服" arrow :bordered="false" @click="customService"/>
-					<t-cell title="合作意向" arrow :bordered="false" @click="cooperation"/>
-					<t-cell title="关于我们" arrow :bordered="false" @click="aboutUs"/>
+					<t-cell title="联系客服" arrow :bordered="true" @click="customService"/>
+					<t-cell title="合作意向" arrow :bordered="true" @click="cooperation"/>
+					<t-cell title="使用教程" arrow :bordered="true" @click="tutorialVideo"/>
+					<t-cell title="关于我们" arrow :bordered="true" @click="aboutUs"/>
 			</div>
 		</view>
   </div>

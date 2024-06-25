@@ -16,7 +16,7 @@ const userInfo = {
 const showDetail = () => {
 	console.log("---------------")
 	console.log("click show detail")
-	router.push('/user/usage')
+	router.push('/usercenter/usage')
 }
 </script>
 

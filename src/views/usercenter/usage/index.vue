@@ -20,7 +20,7 @@ const aboutUs = () => {
 }
 
 const handleClick = ()=>{
-	router.push("/user")
+	router.push("/usercenter")
 }
 </script>
 

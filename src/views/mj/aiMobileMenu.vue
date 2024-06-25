@@ -23,7 +23,7 @@ watch(()=>homeStore.myData.act, (n:string)=>{
         router.push('/chat')
     }
 		if('showUser'==n){
-			router.push('/user')
+			router.push('/usercenter')
 		}
     if('showDraw'==n){
         router.push('/draw')
@@ -40,9 +40,9 @@ watch(()=>homeStore.myData.act, (n:string)=>{
         <SvgIcon icon="ri:wechat-line" class="text-3xl"></SvgIcon>
         <div class="text-[13px]">{{$t('mjtab.chat')}}</div>
       </div>
-			<div class="flex items-center justify-center flex-col"  @click="homeStore.setMyData({act:'showUser'}) "   :class="[ goHome =='user' ? 'active' : 'inactive']" >
+			<div class="flex items-center justify-center flex-col"  @click="homeStore.setMyData({act:'showUser'}) "   :class="[ (goHome =='usercenter' || goHome =='user-usage') ? 'active' : 'inactive']" >
 				<SvgIcon icon="ri:apps-fill" class="text-3xl"></SvgIcon>
-				<div class="text-[13px]">{{$t('mjtab.user')}}</div>
+				<div class="text-[13px]">{{$t('mjtab.usercenter')}}</div>
 			</div>
 <!--      <div class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showgpts'}) " >-->
 <!--        <SvgIcon icon="ri:apps-fill" class="text-3xl"></SvgIcon>-->
