@@ -317,7 +317,6 @@ app.use('/userservice' ,authV2, proxy(BACKEND_API_BASE_URL, {
     return req.originalUrl.replace('/userservice', '/api') // 将URL中的 `/openapi` 替换为空字符串
   },
   proxyReqOptDecorator: function (proxyReqOpts, srcReq) {
-    proxyReqOpts.headers['user-token'] = process.env.BACKEND_API_ACCESS_TOKEN;
     proxyReqOpts.headers['Content-Type'] = 'application/json';
     proxyReqOpts.headers['Mj-Version'] = pkg.version;
     return proxyReqOpts;
