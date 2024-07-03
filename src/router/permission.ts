@@ -6,7 +6,7 @@ export function setupPageGuard(router: Router) {
     const authStore = useAuthStoreWithout()
 		const token = authStore.token
 		if (!token && to.path !== '/login') {
-			next({path: '/login'});
+			// next({path: '/login'});
 		}
     if (!authStore.session) {
       try {

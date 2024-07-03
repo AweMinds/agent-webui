@@ -7,6 +7,7 @@ export interface UserInfo {
   avatar: string
   name: string
   description: string
+	phoneNumber: string
 }
 
 export interface UserState {
@@ -20,6 +21,7 @@ export function defaultSetting(): UserState {
       avatar: '/avatar.png',
       name: t('mjset.sysname'),//'AI绘图',
       description: '',
+			phoneNumber: ''
     },
   }
 }

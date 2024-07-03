@@ -3,6 +3,32 @@ import {Icon as TIcon, Avatar, Cell as TCell, CellGroup as TCellGroup, Toast} fr
 import 'tdesign-mobile-vue/es/style/index.css'
 import {UserCenterCard as TUserCenterCard, UsageGroup as TUsageGroup} from './components'
 import {router} from "@/router";
+import {useAuthStoreWithout, useUserStore, useUserStoreHook} from "@/store";
+import {computed, onMounted, ref} from "vue";
+const authStore = useAuthStoreWithout()
+
+onMounted(() => {
+	const userToken = localStorage.getItem('userToken')
+	const userId = localStorage.getItem('user-id')
+
+	getUserInfo(userId, userToken)
+
+})
+
+const getUserInfo = async (userId: string, userToken: string) => {
+	useUserStoreHook()
+		.getUserInfo({userId: userId, userToken: userToken})
+		.then((res) => {
+			if (res.status) {
+				console.log("--------getUserInfo success---------------")
+			} else {
+				console.log("--------getUserInfo fail---------------")
+			}
+		})
+		.catch((error) => {
+			console.log("--------getUserInfo error---------------")
+		})
+}
 
 const customService = () => {
 	console.log("-----------------")

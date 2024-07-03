@@ -88,6 +88,12 @@ export const getLogin = (data?: object) => {
   return http.request<UserResult>("post", `/userservice/users/login/password?email=${data.email}&password=${data.password}`, {data});
 };
 
+export const getUserInfo = (data?: object) => {
+	return http.request<UserResult>("get", `/userservice/users/${data.userId}`, {data}, {
+		headers: {
+			'user-token': data.userToken
+		}});
+};
 // /** 刷新`token` */
 // export const refreshTokenApi = (data?: object) => {
 //   return http.request<RefreshTokenResult>("post", "/refresh-token", { data });

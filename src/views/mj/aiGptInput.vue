@@ -40,12 +40,16 @@ const { uuid } = route.params as { uuid: string }
 const dataSources = computed(() => chatStore.getChatByUuid(+uuid))
 
 const handleSubmit = ( ) => {
+		if (junmpToLogin()) {
+			return
+		}
+
     if( mvalue.value==''  ) return ;
     if(checkDisableGpt4(gptConfigStore.myData.model)){
         ms.error( t('mj.disableGpt4') );
         return false;
     }
-    if( homeStore.myData.isLoader  ) { 
+    if( homeStore.myData.isLoader  ) {
         return ;
     }
     let obj={

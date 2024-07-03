@@ -11,6 +11,7 @@ import bg from '@/assets/login/bg.png'
 import Motion from '@/views/login/utils/motion'
 import {useAppStore, useAuthStore, useUserStoreHook} from '@/store'
 import { message } from '@/utils/message';
+import {Button as TButton} from 'tdesign-mobile-vue'
 
 // 引入重置样式
 // import '@/styles/reset.scss'
@@ -60,6 +61,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
         .then((res) => {
           if (res.status) {
             authStore.setToken(res.data.tokenValue)
+						localStorage.setItem("userToken", res.data.tokenValue)
             router.push("/chat");
             message("登录成功", {type: "success"});
           } else {

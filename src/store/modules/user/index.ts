@@ -3,7 +3,7 @@ import type { UserInfo, UserState } from './helper'
 import { defaultSetting, getLocalState, setLocalState } from './helper'
 import { store } from '@/store'
 import type { LoginResult } from '@/api/user'
-import { getLogin } from '@/api/user'
+import {getLogin, getUserInfo} from '@/api/user'
 import { setToken } from '@/utils/auth'
 
 export const useUserStore = defineStore('user-store', {
@@ -37,6 +37,20 @@ export const useUserStore = defineStore('user-store', {
           })
       })
     },
+		async getUserInfo(data) {
+			return new Promise<LoginResult>((resolve, reject) => {
+				getUserInfo(data)
+					.then((data) => {
+						if (data?.status === 1)
+							this.updateUserInfo({id: data.data.id, name: data.data.name, phoneNumber: data.data.phoneNumber})
+							// setToken(data.data)
+						resolve(data)
+					})
+					.catch((error) => {
+						reject(error)
+					})
+			})
+		},
   },
 })
 

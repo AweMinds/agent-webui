@@ -19,6 +19,7 @@ import drawListVue from '../mj/drawList.vue'
 import aiGPT from '../mj/aiGpt.vue'
 import AiSiderInput from '../mj/aiSiderInput.vue'
 import aiGptInput from '../mj/aiGptInput.vue'
+import {useAuthStoreWithout} from "@/store";
 
 let controller = new AbortController()
 
@@ -34,6 +35,7 @@ const { isMobile } = useBasicLayout()
 const { addChat, updateChat, updateChatSome, getChatByUuidAndIndex } = useChat()
 const { scrollRef, scrollToBottom, scrollToBottomIfAtBottom } = useScroll()
 const { usingContext, toggleUsingContext } = useUsingContext()
+const authStore = useAuthStoreWithout()
 
 const { uuid } = route.params as { uuid: string }
 
@@ -534,15 +536,41 @@ const footerClass = computed(() => {
   return classes
 })
 
+const user_token = authStore.token
+
 onMounted(() => {
+
+	const href = window.location.href;
+	const params = getQueryParams(href);
+	const user_token = params["user-token"];
+	const user_id = params["user-id"];
+
+	if (user_token != null) {
+		authStore.setToken(user_token)
+		localStorage.setItem("userToken", user_token)
+	}
+	if (user_id != null) {
+		localStorage.setItem("user-id", user_id)
+	}
+
   scrollToBottom()
   if (inputRef.value && !isMobile.value)
     inputRef.value?.focus()
 })
 
+const getQueryParams = (url) => {
+	const paramArr = url.slice(url.indexOf("?") + 1).split("&");
+	const params = {};
+	paramArr.map((param) => {
+		const [key, val] = param.split("=");
+		params[key] = decodeURIComponent(val);
+	});
+	return params;
+}
+
 onUnmounted(() => {
 
-  if (loading.value)   controller.abort() 
+  if (loading.value)   controller.abort()
   homeStore.setMyData({isLoader:false});
 })
 

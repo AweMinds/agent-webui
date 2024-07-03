@@ -26,60 +26,7 @@ const aboutUs = () => {
 const handleClick = ()=>{
 	router.push("/usercenter")
 }
-const onVerifyInputLegal = () => {
-		const { name, phone, detailAddress, districtName } = locationState;
-		const prefixPhoneReg = String(this.properties.phoneReg || innerPhoneReg);
-		const prefixNameReg = String(this.properties.nameReg || innerNameReg);
-		const nameRegExp = new RegExp(prefixNameReg);
-		const phoneRegExp = new RegExp(prefixPhoneReg);
 
-		if (!name || !name.trim()) {
-			return {
-				isLegal: false,
-				tips: '请填写收货人',
-			};
-		}
-		if (!nameRegExp.test(name)) {
-			return {
-				isLegal: false,
-				tips: '收货人仅支持输入中文、英文（区分大小写）、数字',
-			};
-		}
-		if (!phone || !phone.trim()) {
-			return {
-				isLegal: false,
-				tips: '请填写手机号',
-			};
-		}
-		if (!phoneRegExp.test(phone)) {
-			return {
-				isLegal: false,
-				tips: '请填写正确的手机号',
-			};
-		}
-		if (!districtName || !districtName.trim()) {
-			return {
-				isLegal: false,
-				tips: '请选择省市区信息',
-			};
-		}
-		if (!detailAddress || !detailAddress.trim()) {
-			return {
-				isLegal: false,
-				tips: '请完善详细地址',
-			};
-		}
-		if (detailAddress && detailAddress.trim().length > 50) {
-			return {
-				isLegal: false,
-				tips: '详细地址不能超过50个字符',
-			};
-		}
-		return {
-			isLegal: true,
-			tips: '添加成功',
-		};
-}
 
 const privateData = {
 	verifyTips: '',
@@ -93,42 +40,6 @@ const setData = (locationState) => {
 const onInputValue = (e) => {
 	console.log("----------onInputValue-----------")
 	console.log(e)
-	// const { item } = e.currentTarget.dataset;
-	// if (item === 'address') {
-	// 	const { selectedOptions = [] } = e.detail;
-	// 	setData(
-	// 		{
-	// 			'locationState.provinceCode': selectedOptions[0].value,
-	// 			'locationState.provinceName': selectedOptions[0].label,
-	// 			'locationState.cityName': selectedOptions[1].label,
-	// 			'locationState.cityCode': selectedOptions[1].value,
-	// 			'locationState.districtCode': selectedOptions[2].value,
-	// 			'locationState.districtName': selectedOptions[2].label,
-	// 			areaPickerVisible: false,
-	// 		},
-	// 		() => {
-	// 			const { isLegal, tips } = onVerifyInputLegal();
-	// 			setData({
-	// 				submitActive: isLegal,
-	// 			});
-	// 			privateData.verifyTips = tips;
-	// 		},
-	// 	);
-	// } else {
-	// 	const { value = '' } = e.detail;
-	// 	setData(
-	// 		{
-	// 			[`locationState.${item}`]: value,
-	// 		},
-	// 		() => {
-	// 			const { isLegal, tips } = onVerifyInputLegal();
-	// 			setData({
-	// 				submitActive: isLegal,
-	// 			});
-	// 			privateData.verifyTips = tips;
-	// 		},
-	// 	);
-	// }
 }
 const formSubmit = () => {
 	console.log("----------formSubmit------------")

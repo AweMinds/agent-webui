@@ -6,6 +6,7 @@ import { router } from '@/router'
 
 import aiDrawInput from './aiDrawInput.vue';
 import {NDrawerContent,NDrawer} from "naive-ui";
+import {junmpToLogin} from "@/utils/weixin";
 const st= ref({show:true})
 
 const goHome =computed(  () => {
@@ -23,6 +24,9 @@ watch(()=>homeStore.myData.act, (n:string)=>{
         router.push('/chat')
     }
 		if('showUser'==n){
+			if (junmpToLogin()) {
+				return
+			}
 			router.push('/usercenter')
 		}
     if('showDraw'==n){
