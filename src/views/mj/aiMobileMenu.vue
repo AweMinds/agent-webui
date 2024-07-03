@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { SvgIcon } from '@/components/common';
-import { homeStore } from '@/store'
+import {homeStore, useUserStore} from '@/store'
 import { computed,watch ,ref  } from 'vue'
 import { router } from '@/router'
 
 import aiDrawInput from './aiDrawInput.vue';
 import {NDrawerContent,NDrawer} from "naive-ui";
-import {junmpToLogin} from "@/utils/weixin";
+import {junmpToLogin, getUserInfo} from "@/utils/weixin";
 const st= ref({show:true})
+
+const userStore = useUserStore()
+const userInfoStore = computed(() => userStore.userInfo)
+const userId = ref(userInfoStore.value.id ?? '').value
+const userToken = localStorage.getItem('userToken')
 
 const goHome =computed(  () => {
   //router.push('/')
@@ -27,8 +32,10 @@ watch(()=>homeStore.myData.act, (n:string)=>{
 			if (junmpToLogin()) {
 				return
 			}
-			router.push('/usercenter')
-		}
+      getUserInfo(userId, userToken).then(() => {
+        router.push('/usercenter')
+      })
+    }
     if('showDraw'==n){
         router.push('/draw')
         st.value.show=true;

@@ -7,33 +7,6 @@ import {useAuthStoreWithout, useUserStore, useUserStoreHook} from "@/store";
 import {computed, onMounted, ref} from "vue";
 const authStore = useAuthStoreWithout()
 
-const userStore = useUserStore()
-const userInfoStore = computed(() => userStore.userInfo)
-const id = ref(userInfoStore.value.id ?? '').value
-
-onMounted(() => {
-	const userToken = localStorage.getItem('userToken')
-	const userId = id
-
-	getUserInfo(userId, userToken)
-
-})
-
-const getUserInfo = async (userId: string, userToken: string) => {
-	useUserStoreHook()
-		.getUserInfo({userId: userId, userToken: userToken})
-		.then((res) => {
-			if (res.status) {
-				console.log("--------getUserInfo success---------------")
-			} else {
-				console.log("--------getUserInfo fail---------------")
-			}
-		})
-		.catch((error) => {
-			console.log("--------getUserInfo error---------------")
-		})
-}
-
 const customService = () => {
 	console.log("-----------------")
 	console.log("click on customService")

@@ -1,5 +1,5 @@
 import wx from "weixin-js-sdk";
-import {useAuthStoreWithout} from "@/store";
+import {useAuthStoreWithout, useUserStoreHook} from "@/store";
 import {router} from "@/router";
 
 const junmpToLogin = (): boolean => {
@@ -21,4 +21,19 @@ const junmpToLogin = (): boolean => {
 	return false
 }
 
-export {junmpToLogin}
+const getUserInfo = async (userId: string, userToken: string) => {
+	useUserStoreHook()
+		.getUserInfo({userId: userId, userToken: userToken})
+		.then((res) => {
+			if (res.status) {
+				console.log("--------getUserInfo success---------------")
+			} else {
+				console.log("--------getUserInfo fail---------------")
+			}
+		})
+		.catch((error) => {
+			console.log("--------getUserInfo error---------------")
+		})
+}
+
+export {junmpToLogin, getUserInfo}
