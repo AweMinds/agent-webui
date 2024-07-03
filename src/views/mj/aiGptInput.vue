@@ -10,15 +10,16 @@ import { canVisionModel, GptUploader, mlog, upImg,getFileFromClipboard,isFileMp3
 import { gptConfigStore, homeStore,useChatStore } from '@/store';
 import { AutoCompleteOptions } from 'naive-ui/es/auto-complete/src/interface';
 import { RenderLabel } from 'naive-ui/es/_internal/select-menu/src/interface';
-import { useRoute } from 'vue-router' 
+import { useRoute } from 'vue-router'
 import aiModel from "@/views/mj/aiModel.vue"
 import AiMic from './aiMic.vue';
 import { useIconRender } from '@/hooks/useIconRender'
 import VueTurnstile from 'vue-turnstile';
+import { junmpToLogin } from '@/utils/weixin'
 
 const { iconRender } = useIconRender()
 //import FormData from 'form-data'
-const route = useRoute() 
+const route = useRoute()
 const chatStore = useChatStore()
 
 const emit = defineEmits(['update:modelValue'])
