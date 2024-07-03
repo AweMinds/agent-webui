@@ -17,60 +17,10 @@ const gotoUserEditPage = () => {
 	console.log("click gotoUserEditPage")
 }
 
-const conversionChar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-";
-let _conversionCharIndex;
-const getConversionCharIndex = function () {
-	if (_conversionCharIndex) return _conversionCharIndex;
-	_conversionCharIndex = {};
-	for (let index = 0; index < conversionChar.length; index++) {
-		const char0 = conversionChar[index];
-		_conversionCharIndex[char0] = index;
-	}
-	return _conversionCharIndex;
-};
-
-/**
- * 压缩guid
- * @param {string} guid
- */
-const short = (guid) => {
-	if (guid.length !== 36) {
-		return "获取失败";
-	}
-	let value = "0" + guid.replace(/-/g, "");
-	if (value.length !== 33) {
-		return "获取失败";
-	}
-	let result = "";
-	for (let index = 0; index < 11; index++) {
-		let start = index * 3;
-		const str = parseInt(value[start] + value[start + 1] + value[start + 2], 16);
-		result += conversionChar[Math.floor(str / 64)] + conversionChar[str % 64];
-	}
-	return result;
-}
-/**
- * 复原guid
- * @param {string} shortGuid
- */
-const restore = (shortGuid) => {
-	if (shortGuid.length !== 22) throw "Invaild short UUID";
-	let conversionCharIndex = getConversionCharIndex();
-	let result = "";
-	for (let index = 0; index < 22; index += 2) {
-		let u = (conversionCharIndex[shortGuid[index]] * 64 + conversionCharIndex[shortGuid[index + 1]]).toString(16).padStart(3, "0");
-		if (index === 0 && u[0] === "0") {
-			u = u.substr(1);
-		}
-		result += u;
-	}
-	return `${result.substr(0, 8)}-${result.substr(8, 4)}-${result.substr(12, 4)}-${result.substr(16, 4)}-${result.substr(20)}`;
-}
-
 const userInfo = {
 	avatarUrl: 'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/avatar/avatar-1.jpg',
 	nickName: name,
-	uid: short(id),
+	uid: id,
 	phoneNumber: phoneNumber ? phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1****$3") : '未获取'
 }
 
