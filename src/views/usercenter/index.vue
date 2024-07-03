@@ -7,9 +7,13 @@ import {useAuthStoreWithout, useUserStore, useUserStoreHook} from "@/store";
 import {computed, onMounted, ref} from "vue";
 const authStore = useAuthStoreWithout()
 
+const userStore = useUserStore()
+const userInfoStore = computed(() => userStore.userInfo)
+const id = ref(userInfoStore.value.id ?? '').value
+
 onMounted(() => {
 	const userToken = localStorage.getItem('userToken')
-	const userId = localStorage.getItem('user-id')
+	const userId = id
 
 	getUserInfo(userId, userToken)
 
