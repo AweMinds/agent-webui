@@ -29,6 +29,7 @@ const getUserInfo = async (userId: string, userToken: string) => {
 				console.log("--------getUserInfo success---------------")
 			} else {
 				console.log("--------getUserInfo fail---------------")
+				console.log("userId: " + userId + ", userToken: " + userToken)
 			}
 		})
 		.catch((error) => {

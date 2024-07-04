@@ -10,9 +10,6 @@ import {junmpToLogin, getUserInfo} from "@/utils/weixin";
 const st= ref({show:true})
 
 const userStore = useUserStore()
-const userInfoStore = computed(() => userStore.userInfo)
-const userId = ref(userInfoStore.value.id ?? '').value
-const userToken = localStorage.getItem('userToken')
 
 const goHome =computed(  () => {
   //router.push('/')
@@ -32,6 +29,10 @@ watch(()=>homeStore.myData.act, (n:string)=>{
 			if (junmpToLogin()) {
 				return
 			}
+			const userInfoStore = computed(() => userStore.userInfo)
+			const userId = ref(userInfoStore.value.id ?? '').value || localStorage.getItem('user-id')
+			const userToken = localStorage.getItem('userToken')
+
       getUserInfo(userId, userToken).then(() => {
         router.push('/usercenter')
       })
