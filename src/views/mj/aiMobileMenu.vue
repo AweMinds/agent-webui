@@ -33,9 +33,9 @@ watch(()=>homeStore.myData.act, (n:string)=>{
 			const userId = ref(userInfoStore.value.id ?? '').value || localStorage.getItem('user-id')
 			const userToken = localStorage.getItem('userToken')
 
-      getUserInfo(userId, userToken).then(() => {
-        router.push('/usercenter')
-      })
+			getUserInfo(userId, userToken, () => {
+				router.push('/usercenter')
+			})
     }
     if('showDraw'==n){
         router.push('/draw')

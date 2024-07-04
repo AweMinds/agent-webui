@@ -21,12 +21,13 @@ const junmpToLogin = (): boolean => {
 	return false
 }
 
-const getUserInfo = async (userId: string, userToken: string) => {
+const getUserInfo = async (userId: string, userToken: string, callback: func) => {
 	useUserStoreHook()
 		.getUserInfo({userId: userId, userToken: userToken})
 		.then((res) => {
 			if (res.status) {
 				console.log("--------getUserInfo success---------------")
+				callback()
 			} else {
 				console.log("--------getUserInfo fail---------------")
 				console.log("userId: " + userId + ", userToken: " + userToken)
