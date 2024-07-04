@@ -40,7 +40,7 @@ const aboutUs = () => {
 			currAuthStep="{{currAuthStep}}"
 			bind:gotoUserEditPage="gotoUserEditPage"
 		/>
-		<view class="content-wrapper">
+		<view class="bg-gray-100 content-wrapper">
 			<view class="order-group-wrapper">
 				<t-usage-group orderTagInfos="{{orderTagInfos}}" bind:onClickTop="jumpAllOrder" bind:onClickItem="jumpNav" />
 			</view>
