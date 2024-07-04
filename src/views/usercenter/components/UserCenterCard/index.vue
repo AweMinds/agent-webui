@@ -58,8 +58,7 @@ const userInfo = {
 					image="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/avatar/avatar-1.jpg"
 				/>
 				<div class="user-center-card__user__info">
-					<div class="user-center-card__header__name">{{userInfo.nickName || '微信用户'}}</div>
-					<div class="user-center-card__user__uid">UID: {{userInfo.uid || '未获取'}}</div>
+					<div class="user-center-card__header__name">{{userInfo.nickName || '未获取'}}</div>
 					<div class="user-center-card__user__phone">手机号: {{ userInfo.phoneNumber  }}</div>
 				</div>
 			</div>

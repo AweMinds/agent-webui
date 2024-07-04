@@ -532,7 +532,7 @@ const buttonDisabled = computed(() => {
 const footerClass = computed(() => {
   let classes = ['p-4']
   if (isMobile.value)
-    classes = ['sticky', 'left-0', 'bottom-0', 'right-0', 'p-2', 'pr-3'] //, 'overflow-hidden'
+    classes = ['bg-gray-100 ', 'sticky', 'left-0', 'bottom-0', 'right-0', 'p-2', 'pr-3'] //, 'overflow-hidden'
   return classes
 })
 
@@ -602,20 +602,20 @@ const ychat = computed( ()=>{
     scrollToBottomIfAtBottom();
   }
   return { text, dateTime: t('chat.preview')} as Chat.Chat;
-}) 
+})
 </script>
 
 <template>
   <div class="flex flex-col w-full h-full">
    <!-- v-if="isMobile" -->
     <HeaderComponent
-     
+
       :using-context="usingContext"
       @export="handleExport"
       @handle-clear="handleClear"
     />
     <main class="flex-1 overflow-hidden">
-      <div id="scrollRef" ref="scrollRef" class="h-full overflow-hidden overflow-y-auto">
+      <div id="scrollRef" ref="scrollRef" class="bg-gray-100 h-full overflow-hidden overflow-y-auto">
         <div
           id="image-wrapper"
           class="w-full max-w-screen-xl m-auto dark:bg-[#101014]"

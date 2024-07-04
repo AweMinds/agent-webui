@@ -31,10 +31,12 @@ const getUserInfo = async (userId: string, userToken: string, callback: func) =>
 			} else {
 				console.log("--------getUserInfo fail---------------")
 				console.log("userId: " + userId + ", userToken: " + userToken)
+				callback()
 			}
 		})
 		.catch((error) => {
 			console.log("--------getUserInfo error---------------")
+			callback()
 		})
 }
 
