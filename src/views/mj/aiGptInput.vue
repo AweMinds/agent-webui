@@ -249,15 +249,15 @@ watch(()=> homeStore.myData.vtoken ,  regCookie  )
                         <SvgIcon icon="mdi:download" />{{ $t('mj.attr1') }} {{ ii+1 }}
                     </a>
                 </template>
-            </NImage> 
+            </NImage>
             <SvgIcon icon="mdi:close" class="hidden group-hover:block absolute top-[-5px] right-[-5px] rounded-full bg-red-300 text-white cursor-pointer" @click="st.fileBase64.splice(st.fileBase64.indexOf(v),1)"></SvgIcon>
             </div>
         </div>
-        <div class="absolute bottom-0 right-0 z-1">
+        <div class="hidden absolute bottom-0 right-0 z-1">
             <NPopover trigger="hover">
                 <template #trigger>
                     <NTag type="info" round size="small" style="cursor: pointer; " :bordered="false" >
-                        <div class="opacity-60 flex"  >  
+                        <div class="opacity-60 flex"  >
                         <SvgIcon icon="material-symbols:token-outline"  /> {{ $t('mj.remain') }}{{ myToken.remain }}/{{ myToken.modelTokens }}
                         </div>
                     </NTag>
