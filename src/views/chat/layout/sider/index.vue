@@ -22,7 +22,7 @@ const show = ref(false)
 const collapsed = computed(() => appStore.siderCollapsed)
 
 function handleAdd() {
-	let message = '您好，欢迎使用HPLC小助手，请问有什么可以帮到您？'
+	let message = '你好，我是Dr. Chroma，有什么能帮到你？'
 	let uuid = Date.now()
 
 	chatStore.addHistory({title: 'New Chat', uuid: uuid, isEdit: false})
