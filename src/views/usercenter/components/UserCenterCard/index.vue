@@ -55,7 +55,7 @@ const userInfo = {
 					t-class="avatar"
 					mode="aspectFill"
 					class="user-center-card__header__avatar"
-					image="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/avatar/avatar-1.jpg"
+					image="/avatar.png"
 				/>
 				<div class="user-center-card__user__info">
 					<div class="user-center-card__header__name">{{userInfo.nickName || '未获取'}}</div>
