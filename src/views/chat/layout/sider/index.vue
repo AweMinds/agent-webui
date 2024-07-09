@@ -26,18 +26,18 @@ function handleAdd() {
 	let uuid = Date.now()
 
 	chatStore.addHistory({title: 'New Chat', uuid: uuid, isEdit: false})
-
-	addChat(
-		+uuid,
-		{
-			dateTime: new Date().toLocaleString(),
-			text: message,
-			inversion: false,
-			error: false,
-			conversationOptions: null,
-			requestOptions: { prompt: message, options: null },
-		},
-	)
+	//
+	// addChat(
+	// 	+uuid,
+	// 	{
+	// 		dateTime: new Date().toLocaleString(),
+	// 		text: message,
+	// 		inversion: false,
+	// 		error: false,
+	// 		conversationOptions: null,
+	// 		requestOptions: { prompt: message, options: null },
+	// 	},
+	// )
 
   if (isMobile.value)
     appStore.setSiderCollapsed(true)

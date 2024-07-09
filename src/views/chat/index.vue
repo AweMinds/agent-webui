@@ -624,8 +624,8 @@ const ychat = computed( ()=>{
           <template v-if="!dataSources.length">
             <div v-if="homeStore.myData.session.notify" v-html="homeStore.myData.session.notify" class="text-neutral-300 mt-4"></div>
             <div class="flex items-center justify-center mt-4 text-center text-neutral-300" v-else>
-              <SvgIcon icon="ri:bubble-chart-fill" class="mr-2 text-3xl" />
-              <span>Aha~</span>
+<!--              <SvgIcon icon="ri:bubble-chart-fill" class="mr-2 text-3xl" />-->
+              <span style="color: #ABABAB">你好，我是Dr. Chroma，有什么能帮到你？</span>
             </div>
           </template>
           <template v-else>
@@ -717,7 +717,7 @@ const ychat = computed( ()=>{
     </footer>
   </div>
 
-  <drawListVue /> 
-  <aiGPT @finished="loading = false" /> 
-  <AiSiderInput v-if="isMobile"  :button-disabled="false" /> 
+  <drawListVue />
+  <aiGPT @finished="loading = false" />
+  <AiSiderInput v-if="isMobile"  :button-disabled="false" />
 </template>
