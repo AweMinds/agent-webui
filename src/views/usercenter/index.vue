@@ -15,16 +15,20 @@ const customService = () => {
 const cooperation = () => {
 	console.log("-----------------")
 	console.log("click on cooperation")
-	router.push('/usercenter/cooperation')
+	// router.push('/usercenter/cooperation')
 }
 
 const tutorialVideo = () => {
-	window.open('https://video.aweminds.cn/showcase.mp4', '_blank')
+	console.log("-----------------")
+	console.log("click on tutorialVideo")
+	// window.open('https://video.aweminds.cn/showcase.mp4', '_blank')
 	// window.location.href ='https://video.aweminds.cn/showcase.mp4'
 }
 
 const aboutUs = () => {
-	window.open('user_center_header.png', '_blank');
+	console.log("-----------------")
+	console.log("click on aboutUs")
+	// window.open('user_center_header.png', '_blank');
 	// window.location.href ='user_center_header.png'
 }
 </script>

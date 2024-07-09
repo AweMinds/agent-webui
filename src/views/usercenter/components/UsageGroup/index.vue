@@ -10,13 +10,13 @@ const userInfo = {
 	nickName: "Kent",
 	uid: 'wx_jdx284ybds',
 	phoneNumber: '13933333333',
-	remain_chat: 238,
+	remain_chat: "免费试用",
 }
 
 const showDetail = () => {
 	console.log("---------------")
 	console.log("click show detail")
-	router.push('/usercenter/usage')
+	// router.push('/usercenter/usage')
 }
 </script>
 

@@ -47,12 +47,12 @@ const formSubmit = () => {
 }
 
 const locationState = ref({
-	name: "demo",
-	phone: "13929999999",
+	name: "",
+	phone: "",
 	provinceName: "广东",
 	cityName: "深圳",
 	districtName: '宝安区',
-	detailAddress: '博林君瑞',
+	detailAddress: '',
 	labelIndex: 1,
 	isDefault: 1,
 	districtCode: "532800",
