@@ -127,12 +127,12 @@ export const GptUploader =   ( _url :string, FormData:FormData )=>{
     }
 
     //除R2外默认流程
-    const uploadNomal= (url:string)=>{ 
+    const uploadNomal= (url:string)=>{
         url= gptServerStore.myData.UPLOADER_URL? gptServerStore.myData.UPLOADER_URL :  gptGetUrl( url );
-        let headers=   {'Content-Type': 'multipart/form-data' } 
+        let headers=   {'Content-Type': 'multipart/form-data' }
         if(gptServerStore.myData.OPENAI_API_BASE_URL && url.indexOf(gptServerStore.myData.OPENAI_API_BASE_URL)>-1  ) {
             headers={...headers,...getHeaderAuthorization()}
-            
+
         }else{
             const authStore = useAuthStore()
             if( authStore.token ) {
@@ -309,7 +309,8 @@ export const subModel= async (opt: subModelType)=>{
         let  headers ={
                 'Content-Type': 'application/json'
                 //,'Authorization': 'Bearer ' +gptServerStore.myData.OPENAI_API_KEY
-                ,'Accept': 'text/event-stream '
+                ,'Accept': 'text/event-stream ',
+								'User-Token': localStorage.getItem("userToken")
         }
         headers={...headers,...getHeaderAuthorization()}
 
