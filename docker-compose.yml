@@ -47,7 +47,7 @@ services:
       # GPT_URL=/gpts.json  自定义GPTs模型
       GPT_URL:
       # SYS_THEME 主题 theme   light 或者 dark
-      SYS_THEME: dark
+      SYS_THEME: light
       #关闭MD预览  CLOSE_MD_PREVIEW=1
       CLOSE_MD_PREVIEW:
       #爆破：验证次数 注意: vercel 不支持 nginx 请设置  proxy_set_header   X-Forwarded-For  $remote_addr;
@@ -104,7 +104,7 @@ services:
       # GPT_URL=/gpts.json  自定义GPTs模型
       GPT_URL:
       # SYS_THEME 主题 theme   light 或者 dark
-      SYS_THEME: dark
+      SYS_THEME: light
       #关闭MD预览  CLOSE_MD_PREVIEW=1
       CLOSE_MD_PREVIEW:
       #爆破：验证次数 注意: vercel 不支持 nginx 请设置  proxy_set_header   X-Forwarded-For  $remote_addr;
@@ -161,7 +161,7 @@ services:
       # GPT_URL=/gpts.json  自定义GPTs模型
       GPT_URL:
       # SYS_THEME 主题 theme   light 或者 dark
-      SYS_THEME: dark
+      SYS_THEME: light
       #关闭MD预览  CLOSE_MD_PREVIEW=1
       CLOSE_MD_PREVIEW:
       #爆破：验证次数 注意: vercel 不支持 nginx 请设置  proxy_set_header   X-Forwarded-For  $remote_addr;
@@ -218,7 +218,7 @@ services:
       # GPT_URL=/gpts.json  自定义GPTs模型
       GPT_URL:
       # SYS_THEME 主题 theme   light 或者 dark
-      SYS_THEME: dark
+      SYS_THEME: light
       #关闭MD预览  CLOSE_MD_PREVIEW=1
       CLOSE_MD_PREVIEW:
       #爆破：验证次数 注意: vercel 不支持 nginx 请设置  proxy_set_header   X-Forwarded-For  $remote_addr;
