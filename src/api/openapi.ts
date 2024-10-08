@@ -371,11 +371,12 @@ export const subModel= async (opt: subModelType)=>{
            ,stream:false
         }
     }
-    if(body.stream){ 
+    if(body.stream){
         let  headers ={
                 'Content-Type': 'application/json'
                 //,'Authorization': 'Bearer ' +gptServerStore.myData.OPENAI_API_KEY
-                ,'Accept': 'text/event-stream '
+                ,'Accept': 'text/event-stream ',
+								'User-Token': localStorage.getItem("userToken")
         }
         headers={...headers,...getHeaderAuthorization()}
 
