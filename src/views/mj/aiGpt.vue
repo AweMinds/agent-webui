@@ -151,8 +151,9 @@ watch(()=>homeStore.myData.act, async (n)=>{
         let historyMesg=  await getMessage();
         mlog('historyMesg', historyMesg );
         //return ;
-        let message= [ {  "role": "system", "content": getSystemMessage(  +uuid2) },
-                ...historyMesg ];
+        // let message= [ {  "role": "system", "content": getSystemMessage(  +uuid2) },
+        //         ...historyMesg ];
+				let message= [...historyMesg ];
         if( dd.fileBase64 && dd.fileBase64.length>0 ){
             if(  model=='gpt-4-vision-preview' ){
                 let obj={
@@ -212,64 +213,65 @@ watch(()=>homeStore.myData.act, async (n)=>{
         //return ;
         if(['whisper-1','midjourney'].indexOf(model)>-1){
             ms.error( t('mj.noSuppertModel') );
-            return; 
+            return;
         }
 
         controller.value = new AbortController();
-        let message= [ {  "role": "system", "content": getSystemMessage(+st.value.uuid ) },
-                ...historyMesg ]; 
+        // let message= [ {  "role": "system", "content": getSystemMessage(+st.value.uuid ) },
+        //         ...historyMesg ];
+				let message= [...historyMesg ];
         textRz.value=[];
         submit(model, message );
 
-    }else if(n=='gpt.ttsv2'){ 
+    }else if(n=='gpt.ttsv2'){
         const actData:any = homeStore.myData.actData;
         mlog('gpt.ttsv2',actData );
         st.value.index= actData.index;
         st.value.uuid= actData.uuid;
         ms.info( t('mj.ttsLoading'));
         const chatSet = new chatSetting(   +st.value.uuid  );
-        const nGptStore =   chatSet.getGptConfig()  ; 
+        const nGptStore =   chatSet.getGptConfig()  ;
 
         subTTS({model:'tts-1',input: actData.text , voice:nGptStore.tts_voice }).then(d=>{
                 ms.success( t('mj.ttsSuccess'));
                 mlog('subTTS',d );
-                //d.player.play(); 
+                //d.player.play();
                 //textRz.value.push('ok');
-                updateChatSome( +st.value.uuid,  st.value.index 
-                , { 
-                dateTime: new Date().toLocaleString(),loading: false 
-                
+                updateChatSome( +st.value.uuid,  st.value.index
+                , {
+                dateTime: new Date().toLocaleString(),loading: false
+
                 ,opt:{duration:d.duration,lkey:d.saveID }
                 });
                // goFinish();
-                setTimeout(() => { 
+                setTimeout(() => {
                     homeStore.setMyData({act:'playtts',actData:{ saveID:d.saveID} });
                 }, 100);
             }).catch(e=>{
-                let  emsg =   (JSON.stringify(  e.reason? JSON.parse( e.reason ):e,null,2)); 
+                let  emsg =   (JSON.stringify(  e.reason? JSON.parse( e.reason ):e,null,2));
                 if(e.message!='canceled' && emsg.indexOf('aborted')==-1 ) textRz.value.push("\n"+t('mjchat.failReason')+" \n```\n"+emsg+"\n```\n");
                 //goFinish();
             });
 
-    }  
-    
+    }
+
 })
 
 const submit= (model:string, message:any[] ,  opt?:any )=>{
     mlog('提交Model', model  );
     const chatSet = new chatSetting(   +st.value.uuid  );
-    const nGptStore =   chatSet.getGptConfig()  ; 
+    const nGptStore =   chatSet.getGptConfig()  ;
     controller.value = new AbortController();
         if(model=='whisper-1'){
-            
-            //mlog('whisper-12323',opt  ); 
-            const formData = new FormData( ); 
+
+            //mlog('whisper-12323',opt  );
+            const formData = new FormData( );
             formData.append('file', opt.file );
-            formData.append('model', 'whisper-1'); 
+            formData.append('model', 'whisper-1');
 
             //GptUploader('/v1/audio/transcriptions',formData).then(r=>{
             whisperUpload( formData).then(r=>{
-                //mlog('语音识别成功', r ); 
+                //mlog('语音识别成功', r );
                 textRz.value.push(r.text);
                 goFinish();
             }).catch(e=>{
