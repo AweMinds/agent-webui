@@ -41,6 +41,10 @@ jobs:
             type=raw,value=latest
             type=ref,event=tag
 
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=today::$(date +'%Y-%m-%d')"
+        
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
